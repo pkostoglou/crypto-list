@@ -17,7 +17,9 @@ module.exports = () =>{
             const data = await response.json()
             const transformedData = data.map(singleCoin=>({
                 id:singleCoin.id,
+                name:singleCoin.name,
                 symbol:singleCoin.symbol,
+                symbolImage:singleCoin.image,
                 currentPrice:singleCoin.current_price,
                 high24h:singleCoin.high_24h,
                 low24h:singleCoin.low_24h,
