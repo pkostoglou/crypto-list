@@ -44,19 +44,19 @@ module.exports = () =>{
             const response = await fetch(`${process.env.API_URL}/coins/${coinId}?${new URLSearchParams(paramOptions).toString()}`)
             const data = await response.json()
             const transformedData = {
-                currentPrice:data.market_data.current_price.usd,
-                name:data.name,
-                description:data.description.en,
-                high24h:data.market_data.high_24h.usd,
-                low24h:data.market_data.low_24h.usd,
+                currentPrice:data?.market_data.current_price.usd,
+                name:data?.name,
+                description:data?.description.en,
+                high24h:data?.market_data.high_24h.usd,
+                low24h:data?.market_data.low_24h.usd,
                 priceChanges:{
-                    p24h:data.market_data.price_change_percentage_24h,
-                    p7d:data.market_data.price_change_percentage_7d,
-                    p14d:data.market_data.price_change_percentage_14d,
-                    p1m:data.market_data.price_change_percentage_30d,
-                    p2m:data.market_data.price_change_percentage_60d,
-                    p200d:data.market_data.price_change_percentage_200d,
-                    p1y:data.market_data.price_change_percentage_1y
+                    p24h:Number(data?.market_data.price_change_percentage_24h.toFixed(2)),
+                    p7d:Number(data?.market_data.price_change_percentage_7d.toFixed(2)),
+                    p14d:Number(data?.market_data.price_change_percentage_14d.toFixed(2)),
+                    p1m:Number(data?.market_data.price_change_percentage_30d.toFixed(2)),
+                    p2m:Number(data?.market_data.price_change_percentage_60d.toFixed(2)),
+                    p200d:Number(data?.market_data.price_change_percentage_200d.toFixed(2)),
+                    p1y:Number(data?.market_data.price_change_percentage_1y.toFixed(2))
                 }
             }
             res.send(transformedData)

@@ -106,7 +106,8 @@ const CoinListElement = ({
     high24h,
     low24h,
     priceChangePerc24h,
-    index
+    index,
+    handleClick
 }: {
     id: string,
     name: string,
@@ -116,10 +117,11 @@ const CoinListElement = ({
     high24h: number,
     low24h: number,
     priceChangePerc24h: number,
-    index?: number
+    index?: number,
+    handleClick: Function
 }) => {
     return (
-        <ElementWrapper $index={index}>
+        <ElementWrapper $index={index} onClick={()=>handleClick()}>
             <IdentityWrapper>
                 {symbol} | {name}
                 <CoinImage src={symbolImage} alt="coin image" />
